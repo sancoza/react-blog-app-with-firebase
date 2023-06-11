@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export const Header = ({ active, setActive }) => {
+export const Header = ({ active, setActive, user, handleLogout }) => {
+  const userId = user?.uid;
+
   return (
     <nav className="nav navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid bg-faded padding-media">
@@ -57,16 +59,39 @@ export const Header = ({ active, setActive }) => {
               </ul>
               <div className="row g-3">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <Link to="/auth" style={{ textDecoration: 'none' }}>
-                    <li
-                      className={`nav-item nav-link ${
-                        active === 'login' ? ' active' : ''
-                      }`}
-                      onClick={() => setActive('login')}
-                    >
-                      Login
-                    </li>
-                  </Link>
+                  {userId ? (
+                    <>
+                      <div className="profile-logo">
+                        <img
+                          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                          alt="logo"
+                          style={{
+                            width: '30px',
+                            height: '30px',
+                            borderRadius: '50%',
+                            marginTop: '12px',
+                          }}
+                        ></img>
+                      </div>
+                      <p style={{ marginTop: '12px', marginLeft: '5px' }}>
+                        {user?.displayName}
+                      </p>
+                      <li className="nav-item nav-link" onClick={handleLogout}>
+                        Logout
+                      </li>
+                    </>
+                  ) : (
+                    <Link to="/auth" style={{ textDecoration: 'none' }}>
+                      <li
+                        className={`nav-item nav-link ${
+                          active === 'login' ? ' active' : ''
+                        }`}
+                        onClick={() => setActive('login')}
+                      >
+                        Login
+                      </li>
+                    </Link>
+                  )}
                 </ul>
               </div>
             </div>
