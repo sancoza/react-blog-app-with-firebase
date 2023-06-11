@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import { BlogSection } from '../components/BlogSection';
+import { Spinner } from '../components/Spinner';
 
-export const Home = () => {
+export const Home = ({ setActive, user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
 
@@ -16,6 +17,8 @@ export const Home = () => {
           list.push({ id: doc.id, ...doc.data() });
         });
         setBlogs(list);
+        setLoading(false);
+        setActive('home');
       },
       (error) => {
         console.log(error);
@@ -26,6 +29,20 @@ export const Home = () => {
     };
   }, []);
 
+  if (loading) {
+    return <Spinner />;
+  }
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure wanted to delte this blog?')) {
+      try {
+        setLoading(true);
+        await deleteDoc(doc(db, 'blogs', id));
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   console.log('blogs', blogs);
   return (
     <div className="container-fluid pb-4 pt-4 padding">
@@ -33,7 +50,11 @@ export const Home = () => {
         <div className="row mx-0">
           <h2>Trending</h2>
           <div className="col-md-8">
-            <BlogSection blogs={blogs} />
+            <BlogSection
+              blogs={blogs}
+              user={user}
+              handleDelete={handleDelete}
+            />
           </div>
           <div className="col-md-3">
             <h2>Tags</h2>

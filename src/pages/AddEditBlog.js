@@ -23,6 +23,9 @@ const categoryOption = [
   'Business',
   'Politics',
   'Sports',
+  'Travel',
+  'Health',
+  'Entetainment',
 ];
 export const AddEditBlog = ({ user }) => {
   const [form, setForm] = useState(initialState);
