@@ -58,7 +58,7 @@ export const Home = ({ setActive, user }) => {
       unsub();
       getTrendingBlogs();
     };
-  }, []);
+  }, [setActive]);
 
   if (loading) {
     return <Spinner />;
@@ -75,7 +75,7 @@ export const Home = ({ setActive, user }) => {
       }
     }
   };
-  console.log('blogs', blogs);
+
   return (
     <div className="container-fluid pb-4 pt-4 padding">
       <div className="container padding">

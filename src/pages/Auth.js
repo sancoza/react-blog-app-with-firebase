@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -13,7 +17,7 @@ const initialState = {
   confirmPassword: '',
 };
 
-export const Auth = ({ setActive }) => {
+export const Auth = ({ setActive, setUser }) => {
   const [state, setState] = useState(initialState);
   const [signUp, setSingUp] = useState(false);
 
@@ -28,10 +32,15 @@ export const Auth = ({ setActive }) => {
   const hendleAuth = async (e) => {
     e.preventDefault();
     if (!signUp) {
-      if(email && password) {
-        const {user} = await signInWithEmailAndPassword(auth, email, password);
+      if (email && password) {
+        const { user } = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        setUser(user);
         setActive('home');
-      }else {
+      } else {
         return toast.error('Please fill all the fields');
       }
     } else {
