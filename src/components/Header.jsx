@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import transitions from 'bootstrap';
+
+
+
 export const Header = ({ active, setActive, user, handleLogout }) => {
   const userId = user?.uid;
 
@@ -12,19 +16,16 @@ export const Header = ({ active, setActive, user, handleLogout }) => {
               className="navbar-toggler mt-3"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarrSupportedContent"
+              data-bs-target="#navbarSupportedContent"
               data-bs-parent="#navbarSupportedContent"
-              aria-controls="navbarrSupportedContent"
+              aria-controls="navbarSupportedContent"
               aria-expanded="true"
               aria-label="Toggle navigation"
             >
               <span className="fa fa-bars"></span>
             </button>
-            <div className="collapse navbar-collapse">
-              <ul
-                className="navbar-nav me-auto mb-2 mb-lg-0"
-                id="navbarSupportedContent"
-              >
+            <div className="collapse navbar-collapse"  id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <Link to="/" style={{ textDecoration: 'none' }}>
                   <li
                     className={`nav-item nav-link ${

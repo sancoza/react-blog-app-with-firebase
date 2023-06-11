@@ -3,10 +3,17 @@ import { useState, useEffect } from 'react';
 import ReactTagInput from '@pathofdev/react-tag-input';
 import '@pathofdev/react-tag-input/build/index.css';
 import { storage, db } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { async } from '@firebase/util';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+  updateDoc,
+} from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const initialState = {
   title: '',
@@ -21,16 +28,17 @@ const categoryOption = [
   'Technology',
   'Food',
   'Business',
-  'Politics',
   'Sports',
   'Travel',
   'Health',
   'Entetainment',
 ];
-export const AddEditBlog = ({ user }) => {
+export const AddEditBlog = ({ user, setActive }) => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
+
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -63,6 +71,7 @@ export const AddEditBlog = ({ user }) => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            toast.info('Image uploaded to firebase successfully');
             setForm((prev) => ({ ...prev, imgUrl: downloadURL }));
           });
         }
@@ -70,6 +79,19 @@ export const AddEditBlog = ({ user }) => {
     };
     file && uploadFile();
   }, [file]);
+
+  useEffect(() => {
+    id && getBlogDetail();
+  }, [id]);
+
+  const getBlogDetail = async () => {
+    const docRef = doc(db, 'blogs', id);
+    const snapshot = await getDoc(docRef);
+    if (snapshot.exists()) {
+      setForm({ ...snapshot.data() });
+    }
+    setActive(null);
+  };
 
   console.log('form', form);
 
@@ -87,17 +109,34 @@ export const AddEditBlog = ({ user }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && title && description && file) {
-      try {
-        await addDoc(collection(db, 'blogs'), {
-          ...form,
-          timestamp: serverTimestamp(),
-          author: user.displayName,
-          userId: user.uid,
-        });
-      } catch (err) {
-        console.log(err);
+    if (category && tags && title && description && trending) {
+      if (!id) {
+        try {
+          await addDoc(collection(db, 'blogs'), {
+            ...form,
+            timestamp: serverTimestamp(),
+            author: user.displayName,
+            userId: user.uid,
+          });
+          toast.success('Blog created successfully');
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          await updateDoc(doc(db, 'blogs', id), {
+            ...form,
+            timestamp: serverTimestamp(),
+            author: user.displayName,
+            userId: user.uid,
+          });
+          toast.success('Blog updated successfully');
+        } catch (err) {
+          console.log(err);
+        }
       }
+    } else {
+      return toast.error('Please fill all the fields');
     }
     navigate('/');
   };
@@ -106,7 +145,9 @@ export const AddEditBlog = ({ user }) => {
     <div className="container-fluid mb-4">
       <div className="container">
         <div className="col-12">
-          <div className="text-center heading py-2">Create Blog</div>
+          <div className="text-center heading py-2">
+            {id ? 'Update Blog' : 'Crate Blog'}
+          </div>
         </div>
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">
@@ -191,7 +232,7 @@ export const AddEditBlog = ({ user }) => {
                   type="submit"
                   disabled={progress !== null && progress < 100}
                 >
-                  Submit
+                  {id ? 'Update' : 'Submit'}
                 </button>
               </div>
             </form>

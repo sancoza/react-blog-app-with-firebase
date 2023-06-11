@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { excerpt } from '../utility';
 
 export const BlogSection = ({ blogs, user, handleDelete }) => {
-  const userId = user?.uid;
+
   return (
     <div>
       <div className="blog-heading text-start py-2 mb-4">Daily Blogs</div>
@@ -41,12 +41,14 @@ export const BlogSection = ({ blogs, user, handleDelete }) => {
                 size="2x"
                 onClick={() => handleDelete(item.id)}
               />
-              <FontAwesome
+              <Link to={`/update/${item.id}`}>
+               <FontAwesome
                 name="edit"
                 style={{ cursor: 'pointer' }}
                 size="2x"
               />
-            </div>
+              </Link>
+                </div>
               )}
             
           </div>
