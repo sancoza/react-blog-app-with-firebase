@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import './style.scss';
 import './media-query.css';
@@ -41,14 +41,29 @@ function App() {
 
   return (
     <div className="App">
-      <Header setActive={setActive} active={active} user={user} handleLogout={handleLogout} />
+      <Header
+        setActive={setActive}
+        active={active}
+        user={user}
+        handleLogout={handleLogout}
+      />
       <ToastContainer position="top-center" />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/create" element={<AddEditBlog />} />
-        <Route path="/update/:id" element={<AddEditBlog />} />
+        <Route
+          path="/create"
+          element={
+            user?.uid ? <AddEditBlog user={user} /> : <Navigate to="/" />
+          }
+        />
+        <Route
+          path="/update/:id"
+          element={
+            user?.uid ? <AddEditBlog user={user} /> : <Navigate to="/" />
+          }
+        />
 
         <Route path="/about" element={<About />} />
         <Route path="/auth" element={<Auth setActive={setActive} />} />
