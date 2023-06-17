@@ -1,13 +1,13 @@
-[debug] [2023-06-17T13:33:19.615Z] ----------------------------------------------------------------------
-[debug] [2023-06-17T13:33:19.619Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Asus\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2023-06-17T13:33:19.620Z] CLI Version:   12.4.0
-[debug] [2023-06-17T13:33:19.620Z] Platform:      win32
-[debug] [2023-06-17T13:33:19.621Z] Node Version:  v16.13.1
-[debug] [2023-06-17T13:33:19.623Z] Time:          Sat Jun 17 2023 15:33:19 GMT+0200 (Central European Summer Time)
-[debug] [2023-06-17T13:33:19.623Z] ----------------------------------------------------------------------
+[debug] [2023-06-17T14:13:46.348Z] ----------------------------------------------------------------------
+[debug] [2023-06-17T14:13:46.352Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Asus\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2023-06-17T14:13:46.352Z] CLI Version:   3.16.0
+[debug] [2023-06-17T14:13:46.352Z] Platform:      win32
+[debug] [2023-06-17T14:13:46.353Z] Node Version:  v16.13.1
+[debug] [2023-06-17T14:13:46.355Z] Time:          Sat Jun 17 2023 16:13:46 GMT+0200 (Central European Summer Time)
+[debug] [2023-06-17T14:13:46.355Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-06-17T13:33:19.770Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-06-17T13:33:19.771Z] > authorizing via signed-in user (sancoza.developer@gmail.com)
+[debug] [2023-06-17T14:13:46.376Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2023-06-17T14:13:46.377Z] > authorizing via signed-in user
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -21,7 +21,7 @@ You're about to initialize a Firebase project in this directory:
 
 Before we get started, keep in mind:
 
-  * You are initializing within an existing Firebase project directory
+  * You are initializing in an existing Firebase project directory
 
 [info] 
 === Project Setup
@@ -30,53 +30,21 @@ Before we get started, keep in mind:
 [info] You can create multiple project aliases by running firebase use --add, 
 [info] but for now we'll just set up a default project.
 [info] 
-[debug] [2023-06-17T13:35:20.243Z] Using project from CLI flag: react-blogs-app-8668c
-[debug] [2023-06-17T13:35:20.248Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/react-blogs-app-8668c [none]
-[debug] [2023-06-17T13:35:21.369Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/react-blogs-app-8668c 200
-[debug] [2023-06-17T13:35:21.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/react-blogs-app-8668c {"projectId":"react-blogs-app-8668c","projectNumber":"851602017674","displayName":"react-blogs-app","name":"projects/react-blogs-app-8668c","resources":{"hostingSite":"react-blogs-app-8668c","storageBucket":"react-blogs-app-8668c.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_84ded437-a92f-4860-a7d1-73c5ef3ffacb"}
-[info] i  Using project react-blogs-app-8668c (react-blogs-app) 
-[info] 
-=== Functions Setup
-[debug] [2023-06-17T13:35:21.378Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-06-17T13:35:21.378Z] > authorizing via signed-in user (sancoza.developer@gmail.com)
-[debug] [2023-06-17T13:35:21.379Z] [iam] checking project react-blogs-app-8668c for permissions ["firebase.projects.get"]
-[debug] [2023-06-17T13:35:21.379Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-blogs-app-8668c:testIamPermissions [none]
-[debug] [2023-06-17T13:35:21.380Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-blogs-app-8668c:testIamPermissions x-goog-quota-user=projects/react-blogs-app-8668c
-[debug] [2023-06-17T13:35:21.380Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-blogs-app-8668c:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2023-06-17T13:35:23.036Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-blogs-app-8668c:testIamPermissions 200
-[debug] [2023-06-17T13:35:23.037Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-blogs-app-8668c:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2023-06-17T13:35:23.039Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com [none]
-[debug] [2023-06-17T13:35:23.040Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/react-blogs-app-8668c
-[debug] [2023-06-17T13:35:23.045Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/runtimeconfig.googleapis.com [none]
-[debug] [2023-06-17T13:35:23.045Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/react-blogs-app-8668c
-[debug] [2023-06-17T13:35:24.064Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/runtimeconfig.googleapis.com 200
-[debug] [2023-06-17T13:35:24.065Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/runtimeconfig.googleapis.com [omitted]
-[debug] [2023-06-17T13:35:24.071Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com 200
-[debug] [2023-06-17T13:35:24.072Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com [omitted]
-[debug] [2023-06-17T13:35:24.076Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com:enable [none]
-[debug] [2023-06-17T13:35:24.077Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/react-blogs-app-8668c
-[debug] [2023-06-17T13:35:25.629Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com:enable 200
-[debug] [2023-06-17T13:35:25.630Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com:enable [omitted]
-[debug] [2023-06-17T13:35:35.635Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com [none]
-[debug] [2023-06-17T13:35:35.636Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/react-blogs-app-8668c
-[debug] [2023-06-17T13:35:36.589Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com 200
-[debug] [2023-06-17T13:35:36.589Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/react-blogs-app-8668c/services/cloudfunctions.googleapis.com [omitted]
-[info] Let's create a new codebase for your functions.
-[info] A directory corresponding to the codebase will be created in your project
-[info] with sample code pre-configured.
-
-[info] See https://firebase.google.com/docs/functions/organize-functions for
-[info] more information on organizing your functions using codebases.
-
-[info] Functions can be deployed with firebase deploy.
-
-[info] +  Wrote functions/package.json 
-[info] +  Wrote functions/index.js 
-[info] +  Wrote functions/.gitignore 
-[info] 
-=== Storage Setup
-[info] 
-[info] Firebase Storage Security Rules allow you to define how and when to allow
-[info] uploads and downloads. You can keep these rules in your project directory
-[info] and publish them with firebase deploy.
-[info] 
+[debug] [2023-06-17T14:14:17.595Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2023-06-17T14:14:17.596Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ {
+  refresh_token: '1//09FkrazQpHrasCgYIARAAGAkSNwF-L9IrCzbLjIvma9obwR8Ili2SL1z6Xeh_TLbI9SXM4eZmrM4JW80Q4IDvKa-9WDzWGJJ85Ks',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid'
+} 
+ Sat Jun 17 2023 16:14:17 GMT+0200 (Central European Summer Time)
+[debug] [2023-06-17T14:14:17.828Z] <<< HTTP RESPONSE 200
+[debug] [2023-06-17T14:14:17.835Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Sat Jun 17 2023 16:14:17 GMT+0200 (Central European Summer Time)
+[debug] [2023-06-17T14:14:39.910Z] Error: connect ETIMEDOUT 104.197.85.31:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1161:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 104.197.85.31:443
