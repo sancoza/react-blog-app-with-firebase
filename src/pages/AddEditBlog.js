@@ -21,6 +21,8 @@ const initialState = {
   trending: 'no',
   category: '',
   description: '',
+  comments: [],
+  likes: []
 };
 
 const categoryOption = [
@@ -94,7 +96,7 @@ export const AddEditBlog = ({ user, setActive }) => {
     setActive(null);
   };
 
-  console.log('form', form);
+  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -125,7 +127,7 @@ export const AddEditBlog = ({ user, setActive }) => {
         }
       } else {
         try {
-          await updateDoc(doc(db, 'blogs', id), {
+          await updateDoc(doc(db, "blogs", id), {
             ...form,
             timestamp: serverTimestamp(),
             author: user.displayName,

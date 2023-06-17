@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const MostPopular = ({ blogs }) => {
+export const FeatureBlogs = ({ blogs, title }) => {
   const navigate = useNavigate();
 
   return (
     <div>
-      <div className="blog-heading text-start pt-3 py-2 mb-4">Most Popular</div>
+      <div className="blog-heading text-start pt-3 py-2 mb-4">{title}</div>
       {blogs?.map((item) => (
         <div
           key={item.id}
